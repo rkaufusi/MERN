@@ -2,8 +2,11 @@ import express from 'express';
 //import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 import cors from 'cors';
+import studentRoutes from './routes/students.js';
 
 const app = express();
+
+app.use('/students', studentRoutes);
 
 app.use(express.json({limit: "20mb", extended:true}));
 app.use(express.urlencoded({limit: "20mb", extended:true}));
@@ -17,5 +20,4 @@ const PORT = process.env.port || 5000;
 mongoose.connect(CONNECTION_URL).then(() => app.listen(PORT, () => 
     console.log(`Connection established on ${PORT}`)
 )).catch((error) => console.log(error.message));
-//tests
-// t
+//
