@@ -5,13 +5,12 @@ import cors from 'cors';
 import studentRoutes from './routes/students.js';
 
 const app = express();
-
-app.use('/students', studentRoutes);
+app.use(cors());
 
 app.use(express.json({limit: "20mb", extended:true}));
 app.use(express.urlencoded({limit: "20mb", extended:true}));
 
-app.use(cors());
+app.use('/students', studentRoutes);
 
 const CONNECTION_URL = 'mongodb+srv://TaskMNGR:<password>@cluster0.pjhrt.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
 
